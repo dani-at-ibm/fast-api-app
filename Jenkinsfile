@@ -3,11 +3,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Initialize') {
-            steps {
-                echo 'Initialize'
-            }
-        }  
+  
         stage('Build') {
             steps {
                 //sh 'groupadd -g 998 docker'
