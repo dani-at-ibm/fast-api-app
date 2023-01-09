@@ -1,18 +1,25 @@
 pipeline {
-    agent any 
+    agent {
+        label 'docker'
+    }
 
-    stages {   
+    stages {
+        stage('Initialize') {
+            steps {
+                echo 'Initialize'
+            }
+        }  
         stage('Build') {
             steps {
-                sh 'groupadd -g 998 docker'
+                //sh 'groupadd -g 998 docker'
                 sh 'usermod -a -G docker jenkins'
-                sh 'docker build -t pyapp  .'
-                echo 'Building'
+                sh 'docker build -t pyapp .'
+                //echo 'Building'
             }
         }
         stage('Test') {
             steps {
-                //echo 'Testing'
+                echo 'Testing'
             }
         }
         stage('Deploy') {
