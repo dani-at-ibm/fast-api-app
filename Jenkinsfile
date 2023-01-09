@@ -7,12 +7,12 @@ pipeline {
                 sh 'groupadd -g 998 docker'
                 sh 'usermod -a -G docker jenkins'
                 sh 'docker build -t pyapp .'
-                //echo 'Building'
+                echo 'Building'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing'
+                //echo 'Testing'
             }
         }
         stage('Deploy') {
