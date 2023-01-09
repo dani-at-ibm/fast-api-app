@@ -1,8 +1,6 @@
 pipeline {
-    // ① Select a Jenkins slave with Docker capabilities
-    agent {
-        label 'docker'
-    }
+    
+    agent any
    
     stages {
         stage('Build') {
