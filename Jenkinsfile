@@ -11,6 +11,8 @@ pipeline {
             steps {
                 //sh 'groupadd -g 998 docker'
                 sh 'usermod -a -G docker jenkins'
+                sh 'service jenkins stop'
+                sh 'service jenkins start'
                 sh 'docker build -t pyapp .'
                 //echo 'Building'
             }
