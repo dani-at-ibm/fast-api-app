@@ -1,42 +1,39 @@
 pipeline {
-    
     agent any
-   
+
     stages {
         stage('Build') {
             steps {
-                sh "python --version"
-                //sh "docker build . -t ${env.PRODUCT}:py"
+                echo 'Building'
             }
         }
-
-	// ④ Run the test using the built docker image
         stage('Test') {
             steps {
-                script {
-                    sh 'echo "test"'
-                    //sh "docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/make test"
-                }
+                echo 'Testing'
             }
         }
-
-    	// ⑤ Analyse code quality using previous container as a Docker Container Volume
         stage('Deploy') {
             steps {
-             script {
-                    sh 'echo "deploy"'
-                    //sh "docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/make test"
-                }
+                echo 'Deploying'
             }
         }
     }
-
-	// ⑧ Cleanup
     post {
         always {
-            script {
-                sh 'echo "post clean up"'
-            }
+            echo 'This will always run'
+        }
+        success {
+            echo 'This will run only if successful'
+        }
+        failure {
+            echo 'This will run only if failed'
+        }
+        unstable {
+            echo 'This will run only if the run was marked as unstable'
+        }
+        changed {
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
 }
