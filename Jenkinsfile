@@ -1,14 +1,14 @@
 pipeline {
-    agent {
-        label 'docker'
+    agent dockerfile {
+        filename 'Dockerfile.build'
+        dir 'build'
+        label 'my-defined-label'
+        registryUrl 'https://myregistry.com/'
+        registryCredentialsId 'myPredefinedCredentialsInJenkins'
     }
 
     stages {
-        stage('Initialize') {
-            steps {
-                echo 'Initialize'
-            }
-        }  
+         
         stage('Build') {
             steps {
                 //sh 'groupadd -g 998 docker'
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing'
+               // echo 'Testing'
             }
         }
         stage('Deploy') {
