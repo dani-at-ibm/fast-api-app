@@ -1,9 +1,11 @@
 pipeline {
-    agent any
+    agent docker {}
 
-    stages {
+    stages {   
         stage('Build') {
             steps {
+                //sh 'groupadd -g 998 docker'
+                sh 'usermod -a -G docker jenkins'
                 sh 'docker build -t pyapp .'
                 //echo 'Building'
             }
@@ -15,8 +17,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -p 8000:8000 -t -i pyapp'
-                //echo 'Deploying' ///sample pdiose
+                sh 'docker run -p 8000:8000 -t pyapp -i pyapp'
+                //echo 'Deploying'
             }
         }
     }
