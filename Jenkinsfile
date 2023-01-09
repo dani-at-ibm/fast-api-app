@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh "echo test"
+                    sh 'echo "test"'
                     //sh "docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/make test"
                 }
             }
@@ -26,7 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
              script {
-                    sh "echo deploy"
+                    sh 'echo "deploy"'
                     //sh "docker run --tty --name ${env.PRODUCT} ${env.PRODUCT}:py /usr/bin/make test"
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
     post {
         always {
             script {
-                sh "echo post clean up"
+                sh 'echo "post clean up"'
             }
         }
     }
