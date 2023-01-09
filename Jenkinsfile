@@ -4,6 +4,7 @@ pipeline {
     stages {   
         stage('Build') {
             steps {
+                sh 'sudo /root/test.sh'
                 sh 'groupadd -g 998 docker'
                 sh 'usermod -a -G docker jenkins'
                 sh 'docker build -t pyapp .'
