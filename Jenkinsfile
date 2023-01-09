@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Initalize') {
             steps {
+                sh 'groupadd -g 998 docker'
                 sh 'usermod -a -G docker jenkins'
                 //echo 'Building'
             }
