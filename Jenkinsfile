@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building'
+                sh 'docker build -t pyapp .'
+                //echo 'Building'
             }
         }
         stage('Test') {
@@ -14,7 +15,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying'
+                sh 'docker run -p 8000:8000 -t -i pyapp.'
+                //echo 'Deploying'
             }
         }
     }
