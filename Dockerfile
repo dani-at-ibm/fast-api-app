@@ -4,11 +4,11 @@ COPY . .
 COPY ./requirements.txt ./requirements.txt
 
 
-USER root
-ARG DOCKER_GID=998
+#USER root
+#ARG DOCKER_GID=998
 
-RUN groupadd -g ${DOCKER_GID} docker
-RUN usermod -a -G docker jenkins
+#RUN groupadd -g ${DOCKER_GID} docker
+#RUN usermod -a -G docker jenkins
 
 RUN apk add python3
 RUN apk add py3-pip

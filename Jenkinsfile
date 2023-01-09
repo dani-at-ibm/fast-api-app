@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Initalize') {
+            steps {
+                sh 'usermod -a -G docker jenkins'
+                //echo 'Building'
+            }
+        }        
         stage('Build') {
             steps {
                 sh 'docker build -t pyapp .'
