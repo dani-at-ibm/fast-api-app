@@ -8,7 +8,7 @@ USER root
 ARG DOCKER_GID=998
 
 RUN groupadd -g ${DOCKER_GID} docker
-RUN usermod -aG docker jenkins
+RUN usermod -a -G docker jenkins
 
 RUN apk add python3
 RUN apk add py3-pip
