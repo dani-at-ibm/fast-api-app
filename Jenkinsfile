@@ -1,11 +1,11 @@
 pipeline {
-    agent any
+    agent docker
 
     stages {   
         stage('Build') {
             steps {
                 //sh 'groupadd -g 998 docker'
-                sh 'usermod -a -G docker jenkins'
+                //sh 'usermod -a -G docker jenkins'
                 sh 'docker build -t pyapp .'
                 //echo 'Building'
             }
