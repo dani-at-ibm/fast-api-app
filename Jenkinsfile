@@ -3,7 +3,12 @@ pipeline {
         docker { image 'alpine:3.17' }
     }
 
-    stages {   
+    stages {
+        stage('Initialize') {
+            steps {
+                echo 'Initialize'
+            }
+        }  
         stage('Build') {
             steps {
                 //sh 'groupadd -g 998 docker'
