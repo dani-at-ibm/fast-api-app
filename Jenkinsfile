@@ -14,8 +14,19 @@ pipeline {
                 sh 'docker build -t pyapp:0.1.'
                 //echo 'Building'
             }
+              
                 
         }
+        stage('Docker Push') {
+
+      steps {
+      	withCredentials([usernamePassword(credentialsId: 'pdiose', passwordVariable: 'Computer01', usernameVariable: 'pdiose')]) {
+        	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+          sh 'docker push pyapp:0.1'
+        }
+      }
+
+    }
         stage('Test') {
             steps {
                 echo 'Testing'
