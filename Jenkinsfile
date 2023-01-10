@@ -14,7 +14,7 @@ pipeline {
                 sh 'docker run -d --name pyapp-container pyapp-image'
                 sh 'RETVAL=${?}'
                 sh 'docker ps -a'
-                sh 'docker cp pyapp-image:result.xml result.xml'
+                sh 'docker cp pyapp-container:result.xml result.xml'
                 sh 'docker rm -f pyapp-container'
                 sh 'ls -al ./result.xml'
                 sh 'exit ${RETVAL}'
