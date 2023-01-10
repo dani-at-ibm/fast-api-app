@@ -12,7 +12,7 @@ COPY . /src
 
 CMD ["pytest", "--junitxml=''result.xml"]
 
-RUN ls
+RUN find . -name "result.xml"
 
 RUN pwd
 
