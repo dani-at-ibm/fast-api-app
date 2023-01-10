@@ -4,7 +4,7 @@ pipeline {
 
     stages {
   
-        stage('Build & Test') {
+        stage('Build') {
             steps {
                 sh 'docker build -t pyapp-image .'
             }
@@ -16,7 +16,6 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker --version'
                 sh 'docker run -d --name pyapp-container -p 8000:8000 pyapp-image'
                 //sh 'docker run -p 8000:8000 -t pyapp -i pyapp'
             }
