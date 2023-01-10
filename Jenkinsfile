@@ -10,7 +10,7 @@ pipeline {
                 //sh 'echo $USER'
                 //sh 'groupadd -g 998 docker'
                 //sh 'usermod -a -G docker root'
-                sh 'docker build -t pyapp .'
+                sh 'docker build -t pyapp:0.1.'
                 //echo 'Building'
             }
         }
