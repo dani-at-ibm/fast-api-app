@@ -6,7 +6,8 @@ pipeline {
   
         stage('Build') {
             steps {
-                //sh 'groupadd -g 998 docker'
+                sh 'echo $USER'
+                sh 'groupadd -g 998 docker'
                 sh 'usermod -a -G docker root'
                 sh 'docker build -t pyapp .'
                 //echo 'Building'
