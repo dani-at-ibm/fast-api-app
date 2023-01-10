@@ -8,7 +8,7 @@ pipeline {
             steps {
                 //sh 'apk add python3'
                 //sh 'apk add py3-pip'
-                sh 'python -m pip install -r requirements.txt'
+                sh 'python3 -m pip install -r requirements.txt'
                 //sh 'echo $USER'
                 //sh 'groupadd -g 998 docker'
                 //sh 'usermod -a -G docker root'
