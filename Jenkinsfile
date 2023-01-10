@@ -6,7 +6,7 @@ pipeline {
   
         stage('Build') {
             steps {
-                ech 'Build Stage'
+                echo 'Build Stage'
                 sh 'docker build -t pyapp-image .'
             }
         }
