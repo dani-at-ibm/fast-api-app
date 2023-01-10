@@ -3,7 +3,7 @@ pipeline {
     stages {
   
         stage('Build') {
-            agent any
+       
             steps {
                 //sh 'apk add python3'
                 //sh 'apk add py3-pip'
@@ -16,7 +16,7 @@ pipeline {
             }
 
     stage('Docker Push') {
-    	agent any
+
       steps {
       	withCredentials([usernamePassword(credentialsId: 'pdiose', passwordVariable: 'Computer01', usernameVariable: 'pdiose')]) {
         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
