@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker run -it --name pyapp-image pyapp-image'
+                sh 'docker run -d --name pyapp-container pyapp-image'
                 sh 'RETVAL=${?}'
                 sh 'docker cp pyapp-image:/src/result.xml /src/result.xml'
                 sh 'docker rm -f test_some_module'
