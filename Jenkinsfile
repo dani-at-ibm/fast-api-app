@@ -20,7 +20,7 @@ pipeline {
         stage('Docker Push') {
 
       steps {
-      	withCredentials([usernamePassword(credentialsId: 'pdiose', passwordVariable: dockerHubPassword, usernameVariable: dockerHubUser)]) {
+      	withCredentials([usernamePassword(credentialsId: 'pdiose', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
         	sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh 'docker push pyapp:0.1'
         }ss
