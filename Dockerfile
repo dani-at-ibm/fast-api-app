@@ -5,7 +5,7 @@ COPY ./requirements.txt ./requirements.txt
 
 RUN apk add python3
 RUN apk add py3-pip
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --ignore-installed packaging
 
 COPY . . 
 
