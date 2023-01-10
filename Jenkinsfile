@@ -11,7 +11,12 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing'
+                sh 'docker run -it --name pyapp-image pyapp-image'
+                sh 'RETVAL=${?}'
+                sh 'docker cp pyapp-image:/src/result.xml /src/result.xml'
+                sh 'docker rm -f test_some_module'
+                sh 'ls -al ./test_results.xml'
+                sh 'exit ${RETVAL}'
             }
         }
         stage('Deploy') {
