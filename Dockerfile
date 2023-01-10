@@ -9,7 +9,7 @@ RUN apk add py3-pip
 RUN pip install -r /src/requirements.txt --ignore-installed packaging
 
 
-CMD ["pytest", "--junitxml=''result.xml"]
+CMD ["pytest", "--junitxml=result.xml"]
 
 COPY . /src 
 
