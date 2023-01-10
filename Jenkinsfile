@@ -16,6 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'docker --version'
                 sh 'docker run -p 8000:8000 -t pyapp -i pyapp'
             }
         }
