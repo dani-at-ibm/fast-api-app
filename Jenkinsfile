@@ -10,6 +10,11 @@ pipeline {
                 sh 'docker build -t pyapp-image .'
             }
         }
+        //stage('Security Scan') {
+        //    steps {
+        //        sh 'docker run --rm --net=host -v ${PWD}:/sonarqube-flask sonarsource/sonar-scanner-cli sonar-scanner -D sonar.projectBaseDir=/sonarqube-flask'
+        //    }
+        //}
         stage('Test') {
             steps {
                 echo 'Test workflow still a work in progress.'
