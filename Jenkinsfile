@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'docker run -d --name pyapp-container pyapp-image'
                 sh 'RETVAL=${?}'
-                sh 'docker cp pyapp-image:/src/result.xml /result.xml'
+                sh 'docker cp pyapp-image:/result.xml /result.xml'
                 sh 'docker rm -f test_some_module'
                 sh 'ls -al ./test_results.xml'
                 sh 'exit ${RETVAL}'
