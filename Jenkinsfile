@@ -4,7 +4,7 @@ pipeline {
 
     stages {
   
-        stage('Build') {
+        stage('Build & Test') {
             steps {
                 sh 'docker build -t pyapp-image .'
             }
