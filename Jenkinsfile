@@ -23,7 +23,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'uvicorn main:app --port 8000'
+                sh 'python3 main.py'
+                //sh 'uvicorn main:app --port 8000'
                 //sh 'docker run -p 8000:8000 -t pyapp -i pyapp'
                 //echo 'Deploying'
             }
