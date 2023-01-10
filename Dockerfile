@@ -13,9 +13,9 @@ CMD ["pytest", "--junitxml=''result.xml"]
 
 COPY . /src 
 
-RUN find . -name "result.xml"
+#RUN find . -name "result.xml"
 
-RUN pwd
+RUN ls
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 #CMD ["pytest", "--junitxml=''result.xml"]
