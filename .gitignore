@@ -1,5 +1,6 @@
-# Sonar Data
-sonar/*
+# Sonar
+sonar/data/*
+sonar/pg_data/*
 
 
 # Byte-compiled / optimized / DLL files
