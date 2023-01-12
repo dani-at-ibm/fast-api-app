@@ -18,7 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Test workflow still a work in progress.'
-                sh 'docker run --rm --net=host -v ./data:/fast-api-app  sonarqube:8.5.1-community sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=c4541d914f9def731e231293076631ed4a0691bf'
+                sh 'docker run --rm --net=host -v /var/jenkins_home:/fast-api-app  sonarqube:8.5.1-community sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=c4541d914f9def731e231293076631ed4a0691bf'
                 //echo 'Waiving Test Stage'
                 //sh 'docker run -d --name pyapp-container pyapp-image'
                 //sh 'RETVAL=${?}'
