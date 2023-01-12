@@ -1,6 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<testsuites>
-    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.238" timestamp="2023-01-10T16:21:35.996348" hostname="IBM-PF385NYD">
-        <testcase classname="test_main" name="test_hello_world" time="0.001" />
-    </testsuite>
-</testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.245" timestamp="2023-01-12T11:19:59.015129" hostname="IBM-PF385NYD"><testcase classname="test_main" name="test_hello_world" time="0.001" /></testsuite></testsuites>
