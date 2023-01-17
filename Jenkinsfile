@@ -6,18 +6,11 @@ pipeline {
   
         stage('Build') {
             steps {
-                echo 'Build Stage'
                 sh 'docker build -t pyapp-image .'
             }
         }
-        //stage('Security Scan') {
-        //    steps {
-        //        sh 'docker run --rm --net=host -v ${PWD}:/sonarqube-flask sonarsource/sonar-scanner-cli sonar-scanner -D sonar.projectBaseDir=/sonarqube-flask'
-        //    }
-        //}
         stage('Test') {
             steps {
-                echo 'Test workflow still a work in progress.'
                 sh 'sonar-scanner sonar-scanner \
   -Dsonar.projectKey=fast-api-app \
   -Dsonar.sources=. \
