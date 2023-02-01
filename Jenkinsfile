@@ -3,6 +3,19 @@ pipeline {
     agent any
 
     stages {
+        stage('Initial') {
+            agent {
+                docker {
+                    image 'python:3-alpine'
+                }
+            }
+            steps {
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip install --user -r requirements.txt'
+                    sh 'py.test --cov-report xml:coverage.xml --cov=. --junitxml=result.xml'
+                }
+            }
+        }
         /*stage('SonarQube analysis') {
             def scannerHome = tool 'SonarScanner 4.0';
             withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
