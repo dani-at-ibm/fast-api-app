@@ -20,12 +20,12 @@ pipeline {
             }*/
         }
         stage('sonar-scanner') {
-            def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
             //withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
             //sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=https://sonarqube:9000 -Dsonar.login=${sonarLogin}"
             //sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d"
             //}
             steps {
+                def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                 sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d"           
             }
             //sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d"   
