@@ -3,12 +3,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
-            withSonarQubeEnv('My SonarQube Server', envOnly: true) {
-                // This expands the evironment variables SONAR_CONFIG_NAME, SONAR_HOST_URL, SONAR_AUTH_TOKEN that can be used by any script.
-                //sh '${env.SONAR_HOST_URL}'
-                echo 'test' 
+        stage('SonarQube analysis') {
+            def scannerHome = tool 'SonarScanner 4.0';
+            withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+            sh "${scannerHome}/bin/sonar-scanner"
             }
+        }
+        stage('Test') {
             steps {
                 //sh '${env.SONAR_HOST_URL}'
                 sh 'py.test --cov-report xml:coverage.xml --cov=. --junitxml=result.xml'
