@@ -4,17 +4,20 @@ pipeline {
 
     stages {
         stage('Initial') {
-            agent {
+            steps {
+                sh 'ls'
+            }
+            /*agent {
                 docker {
                     image 'python:3-alpine'
                 }
-            }
-            steps {
+            }*/
+            /*steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip install --user -r requirements.txt'
                     sh 'py.test --cov-report xml:coverage.xml --cov=. --junitxml=result.xml'
                 }
-            }
+            }*/
         }
         /*stage('SonarQube analysis') {
             def scannerHome = tool 'SonarScanner 4.0';
