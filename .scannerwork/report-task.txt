@@ -2,5 +2,5 @@ projectKey=fast-api-app
 serverUrl=http://localhost:9000
 serverVersion=8.5.1.38104
 dashboardUrl=http://localhost:9000/dashboard?id=fast-api-app
-ceTaskId=AYYCKC4VxvGeeKm66wtu
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYYCKC4VxvGeeKm66wtu
+ceTaskId=AYYLvDCBeHV5AmHrJj8E
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYYLvDCBeHV5AmHrJj8E

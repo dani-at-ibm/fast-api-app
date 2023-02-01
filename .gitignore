@@ -1,7 +1,9 @@
 # Sonar
-sonar/data/*
-sonar/pg_data/*
-
+docker-compose/data/*
+docker-compose/pg_data/*
+docker-compose/pg_db/*
+docker-compose/logs/*
+docker-compose/extensions/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

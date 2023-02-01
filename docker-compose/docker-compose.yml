@@ -1,12 +1,28 @@
 version: "3"
 
 services:
+  jenkins:
+    image: jenkins/jenkins
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    networks:
+      - jenkins
+    container_name: jenkins-1
+    volumes:
+      - ~/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
   sonarqube:
     image: sonarqube:8.5.1-community
-    container_name: sonarqube
+    container_name: sonarqube-1
     hostname: sonarqube
     ports:
       - 9000:9000
+    networks:
+      - jenkins      
     environment:
       - sonar.jdbc.username=admin
       - sonar.jdbc.password=admin
@@ -18,8 +34,10 @@ services:
 
   db:
     image: postgres:13.1
-    container_name: db
+    container_name: db-1
     hostname: db
+    networks:
+      - jenkins
     environment:
       - POSTGRES_USER=sonar
       - POSTGRES_PASSWORD=sonar
@@ -36,3 +54,6 @@ volumes:
     driver: local
   pg_data:
     driver: local
+
+networks:
+  jenkins:    
