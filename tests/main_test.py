@@ -12,4 +12,7 @@ def test_case_two():
 
 def test_case_three():
     actual_z, result_z = 3, 3
-    assert actual_z == result_z, "Should be 3"    
+    assert actual_z == result_z, "Should be 3"
+
+def test_case_four():
+    assert 4 == 4, "Should be 4"     
