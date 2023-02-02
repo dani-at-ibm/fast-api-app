@@ -2,9 +2,13 @@ pipeline {
 
     agent any
 
-    node {
+    stages {
+        
         stage('sonar-scanner') {
-            //def scannerHome = tool 'sonarqube';
+            def scannerHome = tool 'sonarqube';
+            withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
+                sh "${scannerHome}/bin/sonar-scanner --version"
+            }
             steps {
                 sh "ls"
             }
