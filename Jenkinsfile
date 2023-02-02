@@ -10,8 +10,7 @@ pipeline {
                 sh "ls"
                 script {
                     def scannerHome = tool 'sonarqube';
-                    withSonarQubeEnv() {
-                        echo 'sample out'
+                    withSonarQubeEnv('sonarqube') {
                         sh "${scannerHome}/bin/sonar-scanner -v"
                     }
                 }
