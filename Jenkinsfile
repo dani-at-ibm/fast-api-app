@@ -6,7 +6,7 @@ pipeline {
 
         stage('Scan') {
         
-            agent {
+            /*agent {
                 docker {
                     image 'sonarqube:8.5.1-community'
                     // Run the container on the node specified at the
@@ -14,16 +14,16 @@ pipeline {
                     // rather than on a new node entirely:
                     reuseNode true
                 }
-            }
+            }*/
             steps {
                 sh 'sonar-scanner --version'
-                /*script {
+                script {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
                         
                         sh "${scannerHome}/bin/sonar-scanner --version"
                     }
-                }*/
+                }
             }
         }
         
