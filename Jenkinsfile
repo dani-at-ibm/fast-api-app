@@ -3,6 +3,13 @@ pipeline {
     agent any
 
     stages {
+        stage('sonar-scanner') {
+            def scannerHome = tool 'sonarqube';
+            withSonarQubeEnv() {
+                sh "${scannerHome}/bin/sonar-scanner --version"
+            }
+        }
+
         stage('Initial') {
             steps {
                 sh 'ls'
