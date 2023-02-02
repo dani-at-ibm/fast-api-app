@@ -5,12 +5,14 @@ pipeline {
     stages {
         stage('Scan') {
             steps {
-                script {
+                sh 'mvn --version'
+                /*script {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
+                        
                         sh "${scannerHome}/bin/sonar-scanner --version"
                     }
-                }
+                }*/
             }
         }
         
