@@ -10,7 +10,7 @@ pipeline {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
                         sh "${scannerHome}/bin/sonar-scanner --version"
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d -X"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://192.168.0.116:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d -X"
                     }
                 }
             }
