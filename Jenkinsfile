@@ -16,7 +16,7 @@ pipeline {
                 }
             }*/
             steps {
-                sh 'sonar-scanner --version'
+                
                 script {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
