@@ -5,23 +5,12 @@ pipeline {
     stages {
 
         stage('Scan') {
-        
-            /*agent {
-                docker {
-                    image 'sonarqube:8.5.1-community'
-                    // Run the container on the node specified at the
-                    // top-level of the Pipeline, in the same workspace,
-                    // rather than on a new node entirely:
-                    reuseNode true
-                }
-            }*/
             steps {
-                
                 script {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
-                        
                         sh "${scannerHome}/bin/sonar-scanner --version"
+                        sh 'sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d'
                     }
                 }
             }
