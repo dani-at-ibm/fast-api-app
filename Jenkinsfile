@@ -25,6 +25,7 @@ pipeline {
             }
         }
         
+        
         /*stage('sonar-scanner') {
 
             def scannerHome = tool 'sonarqube';
