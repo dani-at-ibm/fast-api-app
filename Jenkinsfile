@@ -2,7 +2,7 @@ pipeline {
 
     agent any
 
-    stages {
+    node {
         stage('sonar-scanner') {
             //def scannerHome = tool 'sonarqube';
             steps {
