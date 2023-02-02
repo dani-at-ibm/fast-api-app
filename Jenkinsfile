@@ -6,6 +6,8 @@ pipeline {
         stage('Initial') {
             steps {
                 sh 'ls'
+                sh 'sonar-scanner -v'
+                sh 'sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d'
             }
             /*agent {
                 docker {
