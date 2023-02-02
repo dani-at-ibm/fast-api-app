@@ -3,7 +3,9 @@ pipeline {
     agent any
 
     stages {
+
         stage('Scan') {
+        
             agent {
                 docker {
                     image 'sonarqube:8.5.1-community'
