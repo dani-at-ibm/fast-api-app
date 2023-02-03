@@ -9,6 +9,7 @@ pipeline {
         HOST_IP = "192.168.0.116"
         PROJECT_TOKEN = "e139841e7a701c8e197e5722f1079ede03401c2d"
         PROJECT_KEY = "fast-api-app"
+        WORKSPACE = pwd()
     }
 
     stages {
