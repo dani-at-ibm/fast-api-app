@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurperClassic
+
 pipeline {
 
     agent any
@@ -14,7 +16,7 @@ pipeline {
                     }
                 }
 
-                import groovy.json.JsonSlurperClassic
+                
 
                 script {
 
