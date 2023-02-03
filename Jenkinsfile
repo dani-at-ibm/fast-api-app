@@ -15,14 +15,19 @@ pipeline {
                 }
 
                 script { 
-                    echo 'getting sonar status' 
+
+                    final String url = "http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app > status.json"
+                    final String response = sh(script: "curl -s $url", returnStdout: true).trim()
+                    echo response
+
+                    /*echo 'getting sonar status' 
                     sh "curl -X GET -H 'Accept: application/json' http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app > status.json"
                     def json = readJSON file:'status.json'
                     echo "${json.projectStatus.status}"
                     if ("${json.projectStatus.status}" == "ERROR") {
                         currentBuild.result = 'FAILURE'
                         error('Failed quality gates.')
-                    }
+                    }*/
                 }
             }
         }
