@@ -26,6 +26,8 @@ pipeline {
                 script {
                     sh "curl -X GET -H 'Accept: application/json' http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY} > status.json"
                     sh "ls"
+                    def data = readJSON file: "${env.WORKSPACE}\\status.json"
+                    echo "${data.projectStatus.status}"
                     //final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
                     //final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     //def data = new JsonSlurperClassic().parseText(response)
