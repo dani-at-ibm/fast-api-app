@@ -1,4 +1,5 @@
 import groovy.json.JsonSlurperClassic
+import groovy.json.JsonOutput
 
 pipeline {
 
@@ -16,16 +17,15 @@ pipeline {
                     }
                 }
 
-                
-
                 script {
 
                     final String url = "http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-                    def data = new JsonSlurperClassic().parseText(response)
-                    echo "${data.projectStatus.status}"
-
-                    /*echo 'getting sonar status' 
+                    //def data = new JsonSlurperClassic().parseText(response)
+                    //echo "${data.projectStatus.status}"
+                    def data = readJSON text: response;
+                    echo data.projectStatus.status;
+                    /*echo 'getting sonar status'
                     sh "curl -X GET -H 'Accept: application/json' http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app > status.json"
                     def json = readJSON file:'status.json'
                     echo "${json.projectStatus.status}"
