@@ -30,6 +30,10 @@ pipeline {
                     echo "${env.WORKSPACE}"
                     def data = readJSON file: 'status.json'
                     echo "${data.projectStatus.status}"
+                    if ("${data.projectStatus.status}" == "ERROR") {
+                        currentBuild.result = 'FAILURE'
+                        error('Failed quality gates.')
+                    }
                     //echo data.toString()
                     //echo "${data.projectStatus.status}"
                     //final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
