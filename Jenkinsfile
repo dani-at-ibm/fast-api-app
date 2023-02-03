@@ -14,12 +14,11 @@ pipeline {
                     }
                 }
 
-                script { 
-                    import groovy.json.JsonSlurperClassic
-                    
+                script {
+
                     final String url = "http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-                    def data = new JsonSlurperClassic().parseText(response)
+                    def data = new groovy.json.JsonSlurperClassic().parseText(response)
                     echo data
 
                     /*echo 'getting sonar status' 
