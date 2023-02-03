@@ -39,7 +39,7 @@ pipeline {
                     //def data = new JsonSlurperClassic().parseText(response)
                     //echo "${data.projectStatus.status}"
                     def data = readJSON text: response;
-                    echo data;
+                    echo "${data.projectStatus.status}"
 
                     /*echo 'getting sonar status'
                     sh "curl -X GET -H 'Accept: application/json' http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app > status.json"
