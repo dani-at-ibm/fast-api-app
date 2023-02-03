@@ -24,13 +24,14 @@ pipeline {
                 }
 
                 script {
-
-                    final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
-                    final String response = sh(script: "curl -s $url", returnStdout: true).trim()
+                    sh "curl -X GET -H 'Accept: application/json' http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY} > status.json"
+                    sh "ls"
+                    //final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
+                    //final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     //def data = new JsonSlurperClassic().parseText(response)
                     //echo "${data.projectStatus.status}"
                     //def data = readJSON text: response;
-                    echo response;
+                    //echo response;
 
                     /*echo 'getting sonar status'
                     sh "curl -X GET -H 'Accept: application/json' http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app > status.json"
