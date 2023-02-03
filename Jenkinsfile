@@ -26,10 +26,8 @@ pipeline {
 
                 script {
                     sh "curl -X GET -H 'Accept: application/json' http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY} > status.json"
-                    sh "ls"
-                    echo "${env.WORKSPACE}"
                     def data = readJSON file: 'status.json'
-                    echo "${data.projectStatus.status}"
+                    echo data
                     if ("${data.projectStatus.status}" == "ERROR") {
                         currentBuild.result = 'FAILURE'
                         error('Failed quality gates.')
