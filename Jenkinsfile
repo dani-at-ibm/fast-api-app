@@ -23,13 +23,13 @@ pipeline {
 
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=fast-api-app -Dsonar.sources=. -Dsonar.host.url=http://192.168.0.116:9000 -Dsonar.login=e139841e7a701c8e197e5722f1079ede03401c2d -X"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${PROJECT_KEY} -Dsonar.sources=. -Dsonar.host.url=http://${HOST_IP}:9000 -Dsonar.login=${PROJECT_TOKEN} -X"
                     }
                 }
 
                 script {
 
-                    final String url = "http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app"
+                    final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     //def data = new JsonSlurperClassic().parseText(response)
                     //echo "${data.projectStatus.status}"
