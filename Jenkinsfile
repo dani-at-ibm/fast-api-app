@@ -17,10 +17,6 @@ pipeline {
             steps {
                 script {
 
-                    echo "${env.HOST_IP}"
-                    echo "${env.PROJECT_TOKEN}"
-                    echo "${env.PROJECT_KEY}"
-
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${PROJECT_KEY} -Dsonar.sources=. -Dsonar.host.url=http://${HOST_IP}:9000 -Dsonar.login=${PROJECT_TOKEN} -X"
