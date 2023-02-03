@@ -15,18 +15,9 @@ pipeline {
                 }
 
                 script { 
-
-                    echo 'getting result'
                     final String url = "http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
-
-                    echo response
-                    //final def (String response, int code) = sh(script: "curl -s $url -w '\\n%{response_code}'", returnStdout: true).trim().tokenize("\n")
-                    echo "HTTP response status code: $code"
-
-                    if (code == 200) {
-                        echo response
-                    }
+                    echo "${response.projectStatus.status}"
 
                     /*echo 'getting sonar status' 
                     sh "curl -X GET -H 'Accept: application/json' http://192.168.0.116:9000/api/qualitygates/project_status?projectKey=fast-api-app > status.json"
