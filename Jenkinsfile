@@ -28,8 +28,9 @@ pipeline {
                     sh "curl -X GET -H 'Accept: application/json' http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY} > status.json"
                     sh "ls"
                     echo "${env.WORKSPACE}"
-                    def data = readJSON file: "${env.WORKSPACE}\\status.json"
-                    echo data.toString()
+                    def data = readJSON file: 'status.json'
+                    echo "${data.projectStatus.status}"
+                    //echo data.toString()
                     //echo "${data.projectStatus.status}"
                     //final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
                     //final String response = sh(script: "curl -s $url", returnStdout: true).trim()
