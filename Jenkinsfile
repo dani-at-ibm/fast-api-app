@@ -13,13 +13,13 @@ pipeline {
 
         stage ('Test') {
             agent {
-                docker { 
-                    image 'maven:3-alpine'
+                docker {
+                    image 'python:3.11.1-alpine3.16'
                     reuseNode true
                 }
             }
             steps {
-                sh 'mvn --version'
+                sh 'pytest --version'
             }
         }
 
