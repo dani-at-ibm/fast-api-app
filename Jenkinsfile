@@ -19,9 +19,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip3 install pytest'
-                sh "pytest --junitxml=result.xml"
-                //sh "pytest --cov-report xml:coverage.xml --cov=. --junitxml=result.xml"
+                sh 'pip3 install pytest coverage'
+                //sh "pytest --junitxml=result.xml"
+                sh "pytest --cov-report xml:coverage.xml --cov=. --junitxml=result.xml"
             }
         }
 
