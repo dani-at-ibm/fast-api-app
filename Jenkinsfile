@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 sh 'pip3 install pytest'
-                sh 'pytest --version'
+                sh 'py.test --cov-report xml:coverage.xml --cov=. --junitxml=result.xml'
             }
         }
 
