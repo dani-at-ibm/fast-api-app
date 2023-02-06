@@ -14,7 +14,7 @@ pipeline {
         stage ('Test') {
             agent {
                 docker {
-                    image 'python:3.11.1-alpine3.16'
+                    image 'python:docker-pytest'
                     reuseNode true
                 }
             }
