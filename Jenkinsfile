@@ -51,6 +51,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh "${env:BUILD_NUMBER}"
                 sh 'docker build -t pyapp-image .'
             }
         }
