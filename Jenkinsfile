@@ -16,10 +16,13 @@ pipeline {
 
         stage ('Test') {
             agent {
-                docker { image 'maven:3-alpine' }
+                docker { 
+                    image 'maven:3-alpine'
+                    reuseNode true
+                }
             }
-        steps {
-            sh 'mvn --version'
+            steps {
+                sh 'mvn --version'
             }
         }
 
