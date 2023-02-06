@@ -3,7 +3,11 @@ import groovy.json.JsonOutput
 
 pipeline {
 
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine'
+        }
+    }
 
     environment {
         HOST_IP = "192.168.0.116"
@@ -15,12 +19,6 @@ pipeline {
     stages {
 
         stage ('Test') {
-            agent {
-                docker { 
-                    image 'maven:3-alpine'
-                    reuseNode true
-                }
-            }
             steps {
                 sh 'mvn --version'
             }
