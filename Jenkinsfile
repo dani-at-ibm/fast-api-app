@@ -14,10 +14,20 @@ pipeline {
 
     stages {
 
-        stage('Scan') {
-            steps {
-                script {
+        stage ('Test') {
+            agent {
+                docker { image 'maven:3-alpine' }
+            }
+        steps {
+            sh 'mvn --version'
+            }
+        }
 
+        stage('Scan') {
+
+            steps {
+
+                script {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv() {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${PROJECT_KEY} -Dsonar.sources=. -Dsonar.host.url=http://${HOST_IP}:9000 -Dsonar.login=${PROJECT_TOKEN} -X"
@@ -25,7 +35,6 @@ pipeline {
                 }
 
                 script {
-
                     final String url = "http://${HOST_IP}:9000/api/qualitygates/project_status?projectKey=${PROJECT_KEY}"
                     final String response = sh(script: "curl -s $url", returnStdout: true).trim()
                     def data = readJSON text: response;
@@ -34,7 +43,6 @@ pipeline {
                         currentBuild.result = 'FAILURE'
                         error('Failed quality gates.')
                     }
-                    
                 }
             }
         }
@@ -44,6 +52,7 @@ pipeline {
                 sh 'docker build -t pyapp-image .'
             }
         }
+
         stage('Deploy') {
             steps {
                 sh 'docker run -d --name pyapp-container -p 8000:8000 pyapp-image'
