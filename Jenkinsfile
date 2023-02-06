@@ -14,11 +14,12 @@ pipeline {
         stage ('Test') {
             agent {
                 docker {
-                    image 'python:docker-pytest'
+                    image 'python:3.11.1-alpine3.16'
                     reuseNode true
                 }
             }
             steps {
+                sh 'pip3 install pytest'
                 sh 'pytest --version'
             }
         }
