@@ -51,14 +51,12 @@ pipeline {
 
         stage('Build') {
             steps {
-                //sh "docker build -t pyapp-img-${env:BUILD_NUMBER} ."
                 sh "docker build -t pyapp-img ."
             }
         }
 
         stage('Deploy') {
             steps {
-                //sh "docker run -d --name pyapp-${env:BUILD_NUMBER} -p 8000:8000 pyapp-img-${env:BUILD_NUMBER}"
                 sh "docker run -d --name pyapp -p 8000:8000 pyapp-img"
             }
         }
