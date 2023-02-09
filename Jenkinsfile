@@ -21,7 +21,6 @@ pipeline {
             steps {
                 sh "pip3 install pytest coverage"
                 sh "pytest --junitxml=result.xml"
-                //sh "coverage --cov-report xml:coverage.xml --cov=."
             }
         }
 
