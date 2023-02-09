@@ -16,4 +16,4 @@ def test_case_three():
 
 def test_case_four():
     actual_f, result_f = 4, 4
-    assert actual_f == result_f, "Should be 4"     
+    assert 4 == 5, "Should be 4"     
